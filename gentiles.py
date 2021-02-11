@@ -171,6 +171,7 @@ def generate(input_file, output_folder, zoom_level, resize_width):
         col = i % num_tiles
         f = i / num_tiles
         dst = output_folder + '/' + str(zoom_level) + '/' + str(col) + '/' + str(f) + '.png'
+        LOG.info('moving %s to %s', tile, dst)
         shutil.move(tile, dst)
     LOG.info('- done!')
 
