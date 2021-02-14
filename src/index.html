@@ -3,8 +3,13 @@
   <head>
     <title>DnD World Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
-    <script src="node_modules/leaflet/dist/leaflet.js"></script>
+     <link rel="stylesheet"
+           href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+           crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+             crossorigin=""></script>
   </head>
   
   <body style="height: 100%;margin: 0;">
@@ -12,14 +17,13 @@
     <script type="text/javascript">
       // Creating the Map
       var map = L.map('map').setView([0, 0], 0);
-      L.tileLayer('out/{z}/{x}/{y}.png', {
+      L.tileLayer('images/data/{z}/{x}/{y}.png', {
         continuousWorld: false,
         noWrap: true,
         tileSize: 256,
         minZoom: 2,
         maxZoom: 6,
       }).addTo(map);
-      // map.setMaxBounds(map.getBounds());
       // Coordinate Finder
       var marker = L.marker([0, 0], {
         draggable: true,
@@ -29,6 +33,32 @@
         marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
       });
       // Markers
+      var wroat = L.marker([-19.932041, -72.46582], {
+        draggable: false,
+      }).addTo(map);
+      wroat.bindPopup('Wroat is the capital of Breland');
+
+      // try it
+      var geojsonFeature = {
+        "type": "Feature",
+        "properties": {
+          "name": "Coors Field",
+          "amenity": "Baseball Stadium",
+          "popupContent": "This is where the Rockies play!"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-35.817813, -24.345703]
+        }
+      };
+      L.geoJSON(geojsonFeature, {
+        onEachFeature: function(feature, layer) {
+          // does this feature have a property named popupContent?
+          if (feature.properties && feature.properties.popupContent) {
+            layer.bindPopup(feature.properties.popupContent);
+          }
+        }
+      }).addTo(map);
     </script>
   </body>
 </html>
