@@ -2,7 +2,7 @@
 """
 GENERATE SLIPPY MAP TILES
 Jeff Thompson | 2016 | jeffreythompson.org
-Dan Davis     | 2021 | danizen.net - conversion to Python 3
+Dan Davis     | 2021 | danizen.net - conversion to Python 3 and Pillow
 
 Takes a large image as the input, outputs map tiles
 at the appropriate size and file structure for use
@@ -88,8 +88,10 @@ import os
 import re
 import shutil
 import sys
+from argparse import ArgumentParser, ArgumentError
+from pathlib import Path
 
-import magic
+from PIL import Image, UnidentifiedImageError
 
 LOG = logging.getLogger('gentiles')
 
@@ -101,46 +103,20 @@ def power_of(num, base):
     return num == 1
 
 
-def generate(input_file, output_folder, zoom_level, resize_width):
+def generate(image, outpath, zoom_level, resize_width):
     """
-    generates slippyry map tiles from large image
+    generates map tiles from large image
     """
 
     # how many tiles will that be?
-    num_tiles = pow(2, zoom_level)
+    num_tiles = 1 << zoom_level
     LOG.info('Zoom level ' + str(zoom_level) + ' = ' + str(num_tiles) + ' tiles')
 
     # get image dims (without loading into memory)
     # via: http://stackoverflow.com/a/19035508/1167783
     LOG.info('Getting source image dimensions...')
-    t = magic.from_file(input_file)
-    try:
-        if input_file.endswith('.jpg') or input_file.endswith('.jpeg'):
-            dims = re.search(', (\d+)x(\d+)', t)
-            width = int(dims.group(1))
-            height = int(dims.group(2))
-        elif input_file.endswith('.tif') or input_file.endswith('.tiff'):
-            width = int(re.search('width=(\d+)', t).group(1))
-            height = int(re.search('height=(\d+),', t).group(1))
-        elif input_file.endswith('.png'):
-            dims = re.search(', (\d+) x (\d+)', t)
-            width = int(dims.group(1))
-            height = int(dims.group(2))
-        else:
-            LOG.error('Unknown source image type; JPG, TIFF, or PNG only! Quitting...')
-            sys.exit(1)
-    except:
-        LOG.error('Could not parse source image dims! Quitting...')
-        sys.exit(1)
-    
-    LOG.info('- ' + str(width) + ' x ' + str(height) + ' pixels')
-
-    # errors and warnings
-    if not power_of(int(width), 2):
-        LOG.warning('Source image dims should be power of 2! Continuing anyway...')
-    if width != height:
-        LOG.error('Source image should be square! Quitting...')
-        sys.exit(1)
+    width, height = image.size    
+    LOG.info('%d x %d pixels', width, height)
 
     # get details for ImageMagick
     LOG.info('Splitting to...')
@@ -148,43 +124,59 @@ def generate(input_file, output_folder, zoom_level, resize_width):
     LOG.info('- ' + str(tile_width) + ' x ' + str(tile_width) + ' px tiles')
     pad = len(str(num_tiles * num_tiles))
 
-    # split using ImageMagic, then resize to the expected tile size
-    # use filename padding so glob gets them in the right order
-    if not os.path.exists(output_folder):
-        os.mkdir(output_folder)
-    cmd = 'convert ' + input_file + ' -quiet -crop ' + str(tile_width) + 'x' + str(tile_width) + ' -resize ' + str(resize_width) + 'x' + str(resize_width) + ' ' + output_folder + '/%0' + str(pad) + 'd.png'
-    os.popen(cmd)
+    # create output directory
+    outpath.mkdir(exist_ok=True)
+    outpath = outpath.joinpath(str(zoom_level))
+    outpath.mkdir(exist_ok=True)
+
+    # Remove existing children
+    for child in outpath.rglob('*.png'):
+        child.unlink()
+
     LOG.info('- done!')
 
-    # rename/move images into tile server format
-    LOG.info('Moving files into column folders...')
 
-    # 1. make cols
-    for x in range(0, num_tiles):
-        folder = output_folder + '/' + str(zoom_level) + '/' + str(x)
-        if not os.path.exists(folder):
-            os.makedirs(folder)
+def zoom_range_type(value):
+    try:
+        value = value.strip()
+        if '-' in value:
+            match = re.search(r'^([0-9]+)-([0-9]+)$', value)
+            if not match:
+                raise ArgumentError('should be a zoom level or range')
+            zoom_min = int(match.group(1))
+            zoom_max = int(match.group(2))
+            if zoom_min > zoom_max:
+                raise ArgumentError('should be a zoom level or range')
+            if zoom_min < 1:
+                raise ArgumentError('should be a zoom level or range')
+        else:
+            zoom_min = zoom_max = int(value) 
+            if zoom_min < 1:
+                raise ArgumentError('should be a zoom level or range')
+    except ValueError:
+        raise ArgumentError('should be a zoom level or range')
+    return (zoom_min, zoom_max)
 
-    # 2. move tiles into their column folders
-    tiles = glob.glob(output_folder + '/*.png')
-    for i, tile in enumerate(tiles):
-        col = i % num_tiles
-        f = i / num_tiles
-        dst = output_folder + '/' + str(zoom_level) + '/' + str(col) + '/' + str(f) + '.png'
-        LOG.info('moving %s to %s', tile, dst)
-        shutil.move(tile, dst)
-    LOG.info('- done!')
+
+def positive_int_type(rawvalue):
+    try:
+        value = int(rawvalue.strip())
+    except ValueError:
+        raise ArgumentError('should be a positive integer')
+    if value <= 0:
+        raise ArgumentError('should be a positive integer')
+    return value
 
 
 def create_parser(prog_name):
-    parser = argparse.ArgumentParser(prog=prog_name, description="Generate map files for leaflet")
+    parser = ArgumentParser(prog=prog_name, description="Generate map files for leaflet")
     parser.add_argument('input_file',
                         help='large image file to split (JPG, PNG, or TIFF)')
-    parser.add_argument('zoom_level',
+    parser.add_argument('zoom_level', type=zoom_range_type,
                         help='zoom level(s) to generate (0 to 18); either integer or range (ex: 2-6)')
     parser.add_argument('output_folder',
                         help='folder name to write tiles to (will be created if does not exist)')
-    parser.add_argument('-w', '--resize_width', metavar='', type=int, default=256,
+    parser.add_argument('-w', '--resize_width', metavar='', type=positive_int_type, default=256,
                         help='dimension in pixels for outputted tiles (default 256px)')
     parser.add_argument('-q', '--quiet', action='store_true', default=False,
                         help='suppress all output from program (useful for integrating into larger projects)')
@@ -200,32 +192,34 @@ def main():
     parser = create_parser(sys.argv[0])
     args = parser.parse_args(sys.argv[1:])
 
-    input_file = args.input_file
-    zoom_level = args.zoom_level
+    input_path = args.input_file
+    zoom_min, zoom_max = args.zoom_level
     output_folder = args.output_folder
     resize_width = args.resize_width
     setup_logging(args.quiet)
 
-    LOG.info('GENERATING SLIPPY-MAP TILES')
-    LOG.info('-' * 14)
+    # open the image
+    try:
+        image = Image.open(input_path)
+        width, height = image.size
+        if not power_of(width, 2):
+            LOG.warning('Source image dims should be power of 2! Continuing anyway...')
+        if width != height:
+            LOG.error('Source image should be square! Quitting...')
+            sys.exit(1)
+    except UnidentifiedImageError:
+        LOG.error('%s: cannot open image file', input_path)
+        sys.exit(1)
+
+    output_path = Path(output_folder)
+
+    LOG.info('Generating tiles for leaflet.js for zoom levels %d to %d to %s',
+             zoom_min, zoom_max, output_folder)
 
     # if multiple zoom levels, run them all
-    # otherwise, run just once
-    if '-' in zoom_level:
-        try:
-            match = re.search(r'([0-9]+)-([0-9]+)', zoom_level)
-            zoom_min = int(match.group(1))
-            zoom_max = int(match.group(2))
-        except:
-            LOG.error("Couldn't parse zoom levels; should be int or 'min-max'! Quitting...")
-            sys.exit(1)
-        for z in range(zoom_min, zoom_max+1):
-            generate(input_file, output_folder, z, resize_width)
-            LOG.info('-' * 14)
-    else:
-        generate(input_file, output_folder, int(zoom_level), resize_width)
-        LOG.info('-' * 14)
-
+    for z in range(zoom_min, zoom_max+1):
+        LOG.info('generate zoom level %d' % z)
+        generate(image, output_path, z, resize_width)
     # that's it!
     LOG.info('FINISHED!')
 

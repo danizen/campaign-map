@@ -11,12 +11,12 @@
     <div id="map" style="width: 100%; height: 100%; background: #000000;"></div>
     <script type="text/javascript">
       // Creating the Map
-      var map = L.map('out').setView([0, 0], 0);
-      L.tileLayer('out/{z}/{x}/{y}.png', {
+      var map = L.map('map').setView([0, 0], 0);
+      L.tileLayer('out/{z}/{y}/{x}.png', {
         continuousWorld: false,
-        noWrap: true,  
-        minZoom: 3,
-        maxZoom: 6,
+        noWrap: true,
+        tileSize: 256,
+        maxZoom: 10,
       }).addTo(map);
       // Coordinate Finder
       var marker = L.marker([0, 0], {
