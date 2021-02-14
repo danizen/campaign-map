@@ -12,12 +12,14 @@
     <script type="text/javascript">
       // Creating the Map
       var map = L.map('map').setView([0, 0], 0);
-      L.tileLayer('out/{z}/{y}/{x}.png', {
+      L.tileLayer('out/{z}/{x}/{y}.png', {
         continuousWorld: false,
         noWrap: true,
         tileSize: 256,
-        maxZoom: 10,
+        minZoom: 2,
+        maxZoom: 6,
       }).addTo(map);
+      // map.setMaxBounds(map.getBounds());
       // Coordinate Finder
       var marker = L.marker([0, 0], {
         draggable: true,

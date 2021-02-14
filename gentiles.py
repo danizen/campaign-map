@@ -121,7 +121,7 @@ def generate(image, outpath, zoom_level, resize_width):
     # get details for ImageMagick
     LOG.info('Splitting to...')
     tile_width = int(math.ceil(width / num_tiles))
-    LOG.info('- ' + str(tile_width) + ' x ' + str(tile_width) + ' px tiles')
+    LOG.info('' + str(tile_width) + ' x ' + str(tile_width) + ' px tiles')
     pad = len(str(num_tiles * num_tiles))
 
     # create output directory
@@ -132,6 +132,21 @@ def generate(image, outpath, zoom_level, resize_width):
     # Remove existing children
     for child in outpath.rglob('*.png'):
         child.unlink()
+
+    for x in range(num_tiles):
+        outpath.joinpath(str(x)).mkdir(exist_ok=True)
+        for y in range(num_tiles):
+            left = tile_width * x
+            top = tile_width * y
+            right = left + tile_width
+            bottom = top + tile_width
+            tile = image.crop([left, top, right, bottom])
+            tile = tile.resize([resize_width, resize_width])
+            tile_path = outpath.joinpath(f'{x}/{y}.png')
+            tile.save(tile_path)
+            print('.', end='')
+            sys.stdout.flush()
+    print('')
 
     LOG.info('- done!')
 
