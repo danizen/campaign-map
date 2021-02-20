@@ -38,6 +38,38 @@
       }).addTo(map);
       wroat.bindPopup('Wroat is the capital of Breland');
 
+      // Create a fog of war pane
+      map.createPane('fog');
+      map.getPane('fog').style.zIndex = 650;
+      map.getPane('fog').style.pointerEvents = 'none';
+
+      var fogOfWar = {
+        type: 'FeaturesCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Polygon',
+              coordinates: [[
+                [23.241346, -36.738281],
+                [23.402765, -8.613281],
+                [37.71859, -25.3125],
+                [23.241346, -36.738281],
+              ]]
+            },
+          }
+        ]
+      };
+      L.geoJSON(fogOfWar, {
+        // pane: 'fog',
+        style: function(feature) {
+          return {
+            fillColor: '#000000',
+            fillOpacity: 0.4,
+            opacity: 0,
+          };
+        },
+      }).addTo(map);
       // try it
       var geojsonFeature = {
         "type": "Feature",

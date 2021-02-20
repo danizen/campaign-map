@@ -15,6 +15,20 @@ Run `npm install` to install front-end dependencies.
 
 Run `npm run build` to build application.
 
+## Fog of War
+
+The basic technique to develop a fog of war with Leaflet is
+to create a custom pane which appears above markers, but below
+popups.
+
+GeoJSON makes a vector approach to the fog of war ideal.  We simply
+add GeoJSON polygons with a partially transparent fill layer to the
+the custom pane.
+
+If we want to take a raster approach to the fog of war, I guess we can
+use very small tiles and check the intersection with the raster, or we
+can tile and load the raster image into the custom pane.
+
 ## Resources
 
 - Stolen gist for tiling - https://gist.github.com/jeffThompson/a08e5b8146352f3974bfa4100d0317f6

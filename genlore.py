@@ -2,6 +2,7 @@
 import logging
 import sys
 from argparse import ArgumentParser
+from pathlib import Path
 
 LOG = logging.getLogger('gentiles')
 
