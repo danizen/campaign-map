@@ -19,7 +19,7 @@
 
       // Creating the Map
       var map = L.map('map').setView([0, 0], 0);
-      L.tileLayer('images/data/{z}/{x}/{y}.png', {
+      L.tileLayer('images/khorvaire/{z}/{x}/{y}.png', {
         continuousWorld: false,
         noWrap: true,
         tileSize: 256,
@@ -29,16 +29,19 @@
       map.setMaxBounds(map.getBounds());
 
       // Coordinate Finder
-      var marker = L.marker([0, 0], {
-        draggable: true,
-      }).addTo(map);
-      marker.bindPopup('LatLng Marker').openPopup();
-      marker.on('dragend', function(e) {
-        var latlng = marker.getLatLng();
-        var lat = latlng.lat.toFixed(4);
-        var lng = latlng.lng.toFixed(4);
-        marker.getPopup().setContent(`[${lng}, ${lat}]`).openOn(map);
-      });
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('admin')) {
+        var marker = L.marker([0, 0], {
+          draggable: true,
+        }).addTo(map);
+        marker.bindPopup('LatLng Marker').openPopup();
+        marker.on('dragend', function(e) {
+          var latlng = marker.getLatLng();
+          var lat = latlng.lat.toFixed(4);
+          var lng = latlng.lng.toFixed(4);
+          marker.getPopup().setContent(`[${lng}, ${lat}]`).openOn(map);
+        });
+      }
 
       // Converts lore into popup text
       function lorePopup(layer) {
