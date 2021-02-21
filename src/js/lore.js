@@ -74,6 +74,88 @@ var geoCities = {
   ]
 };
 
+var geoSites = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.1602,
+          28.5363
+        ]
+      },
+      "properties": {
+        "name": "Glowing Chasm",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Glowing_Chasm\" target=\"blank\">Glowing Chasm</a>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.2344,
+          -4.1273
+        ]
+      },
+      "properties": {
+        "name": "Crimson Water",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Crimson_Water\" target=\"blank\">Crimson Water</a>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.5664,
+          -5.1785
+        ]
+      },
+      "properties": {
+        "name": "Glass Plateau",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Glass_Plateau\" target=\"blank\">Glass Plateau</a>"
+      }
+    }
+  ]
+};
+
+var geoRuins = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.7969,
+          -7.6239
+        ]
+      },
+      "properties": {
+        "name": "Making",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Making\" target=\"blank\">Making</a>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.916,
+          -29.3056
+        ]
+      },
+      "properties": {
+        "name": "Seaside",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Seaside\" target=\"blank\">Seaside</a>"
+      }
+    }
+  ]
+};
+
 var geoTowns = {
   "type": "FeatureCollection",
   "features": [

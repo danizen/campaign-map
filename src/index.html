@@ -26,7 +26,10 @@
         minZoom: 2,
         maxZoom: 6,
       }).addTo(map);
-      map.setMaxBounds(map.getBounds());
+      map.setMaxBounds([
+        [90, 180],
+        [-90, -180]
+      ]);
 
       // Coordinate Finder
       const params = new URLSearchParams(window.location.search);
@@ -55,10 +58,14 @@
       var mlTowns = L.geoJSON(geoTowns).bindPopup(lorePopup);
       var mlCities = L.geoJSON(geoCities).bindPopup(lorePopup);
       var mlCapitals = L.geoJSON(geoCapitals).bindPopup(lorePopup);
+      var mlSites = L.geoJSON(geoSites).bindPopup(lorePopup);
+      var mlRuins = L.geoJSON(geoRuins).bindPopup(lorePopup);
       var overlays = {
-        'Towns': mlTowns,
-        'Cities': mlCities,
         'Capitals': mlCapitals,
+        'Cities': mlCities,
+        'Ruins': mlRuins,
+        'Sites': mlSites,
+        'Towns': mlTowns,
       }
       L.control.layers(null, overlays).addTo(map);
     </script>

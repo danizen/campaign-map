@@ -72,3 +72,17 @@ Here is my best guess at an algorithm.
     - Take log2 of width
     - Round off, and raise 2 to that power
     - Resize to the power of 2
+
+## Bounds
+
+By experiment, longitudes run from -180 to 180.
+Latitudes run from -90 to 90.
+
+setMaxBounds and fitBounds accept corner1 and corner2.
+
+```javascript
+map.setMaxBounds([
+    [90, 180],
+    [-90, -180]
+]);
+```
