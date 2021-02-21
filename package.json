@@ -1,0 +1,27 @@
+{
+  "name": "eberron-map",
+  "version": "0.0.1",
+  "description": "A campaign map to look at between sessions",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "deploy-aws-s3-cloudfront --bucket eberron-map-us-east-1 --source src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danizen/campaign-map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danizen/campaign-map/issues"
+  },
+  "homepage": "https://github.com/danizen/campaign-map#readme",
+  "devDependencies": {
+    "deploy-aws-s3-cloudfront": "^3.3.0"
+  },
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  }
+}

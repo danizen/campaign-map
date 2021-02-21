@@ -33,8 +33,16 @@
         marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
       });
       // Markers
+      // var greenIcon = L.icon({
+      //   iconUrl: 'images/icons/floating-platforms.png',
+      //   shadowUrl: 'images/icons/marker-shadow.png',
+      //   iconSize: [25, 41], // size of the icon
+      //   shadowSize: [41, 41],
+      // });
+
       var wroat = L.marker([-19.932041, -72.46582], {
         draggable: false,
+        // icon: greenIcon,
       }).addTo(map);
       wroat.bindPopup('Wroat is the capital of Breland');
 
@@ -70,7 +78,8 @@
           };
         },
       }).addTo(map);
-      // try it
+      // try it with a custom icon
+
       var geojsonFeature = {
         "type": "Feature",
         "properties": {
@@ -80,7 +89,7 @@
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-35.817813, -24.345703]
+          "coordinates": [-24.345703, -35.817813]
         }
       };
       L.geoJSON(geojsonFeature, {
