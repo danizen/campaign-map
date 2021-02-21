@@ -122,6 +122,26 @@ var geoSites = {
   ]
 };
 
+var geoForts = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.1416,
+          17.3297
+        ]
+      },
+      "properties": {
+        "name": "Arythawn Keep",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Arythawn_Keep\" target=\"blank\">Arythawn Keep</a>"
+      }
+    }
+  ]
+};
+
 var geoRuins = {
   "type": "FeatureCollection",
   "features": [

@@ -60,9 +60,11 @@
       var mlCapitals = L.geoJSON(geoCapitals).bindPopup(lorePopup);
       var mlSites = L.geoJSON(geoSites).bindPopup(lorePopup);
       var mlRuins = L.geoJSON(geoRuins).bindPopup(lorePopup);
+      var mlForts = L.geoJSON(geoForts).bindPopup(lorePopup);
       var overlays = {
         'Capitals': mlCapitals,
         'Cities': mlCities,
+        'Forts': mlForts,
         'Ruins': mlRuins,
         'Sites': mlSites,
         'Towns': mlTowns,
