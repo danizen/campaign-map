@@ -1,3 +1,5 @@
 /src/images/data/
 /out/
 /node_modules/
+*.pyc
+*.pyo

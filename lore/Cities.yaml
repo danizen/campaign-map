@@ -1,0 +1,5 @@
+---
+- name: Sharn
+  description: Sharn, largest city on Khorvaire
+  link: https://eberron.fandom.com/wiki/Sharn
+  coordinates: [-91.779785, -39.368279]

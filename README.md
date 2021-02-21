@@ -29,6 +29,20 @@ If we want to take a raster approach to the fog of war, I guess we can
 use very small tiles and check the intersection with the raster, or we
 can tile and load the raster image into the custom pane.
 
+## Lore
+
+Each category of lore should go into its own L.LayerGroup, which takes an array
+of markers.  These Layer groups are then added to an overlays object as described
+in the interactive tutorial. So, each bit of lore needs the following properties:
+
+* lat
+* lng
+* markup (for popup)
+* category
+
+These can be kept in a super simple sqlite3 database, or maybe a YAML file, or
+as properties of GeoJSON.
+
 ## Resources
 
 - Stolen gist for tiling - https://gist.github.com/jeffThompson/a08e5b8146352f3974bfa4100d0317f6

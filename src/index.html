@@ -14,7 +14,9 @@
   
   <body style="height: 100%;margin: 0;">
     <div id="map" style="width: 100%; height: 100%; background: #000000;"></div>
+    <script type="text/javascript" src="lore.js"></script>
     <script type="text/javascript">
+
       // Creating the Map
       var map = L.map('map').setView([0, 0], 0);
       L.tileLayer('images/data/{z}/{x}/{y}.png', {
@@ -24,82 +26,71 @@
         minZoom: 2,
         maxZoom: 6,
       }).addTo(map);
+      map.setMaxBounds(map.getBounds());
+
       // Coordinate Finder
       var marker = L.marker([0, 0], {
         draggable: true,
       }).addTo(map);
       marker.bindPopup('LatLng Marker').openPopup();
       marker.on('dragend', function(e) {
-        marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+        var latlng = marker.getLatLng();
+        var lat = latlng.lat.toFixed(4);
+        var lng = latlng.lng.toFixed(4);
+        marker.getPopup().setContent(`[${lng}, ${lat}]`).openOn(map);
       });
-      // Markers
-      // var greenIcon = L.icon({
-      //   iconUrl: 'images/icons/floating-platforms.png',
-      //   shadowUrl: 'images/icons/marker-shadow.png',
-      //   iconSize: [25, 41], // size of the icon
-      //   shadowSize: [41, 41],
-      // });
 
-      var wroat = L.marker([-19.932041, -72.46582], {
-        draggable: false,
-        // icon: greenIcon,
-      }).addTo(map);
-      wroat.bindPopup('Wroat is the capital of Breland');
+      // Converts lore into popup text
+      function lorePopup(layer) {
+        if (layer.feature.properties.description) {
+          return layer.feature.properties.description
+        }
+        return layer.feature.properties.name;
+      }
+
+      // Overlays based on lore
+      var mlTowns = L.geoJSON(geoTowns).bindPopup(lorePopup);
+      var mlCities = L.geoJSON(geoCities).bindPopup(lorePopup);
+      var mlCapitals = L.geoJSON(geoCapitals).bindPopup(lorePopup);
+      var overlays = {
+        'Towns': mlTowns,
+        'Cities': mlCities,
+        'Capitals': mlCapitals,
+      }
+      L.control.layers(null, overlays).addTo(map);
 
       // Create a fog of war pane
-      map.createPane('fog');
-      map.getPane('fog').style.zIndex = 650;
-      map.getPane('fog').style.pointerEvents = 'none';
-
-      var fogOfWar = {
-        type: 'FeaturesCollection',
-        features: [
-          {
-            type: 'Feature',
-            geometry: {
-              type: 'Polygon',
-              coordinates: [[
-                [23.241346, -36.738281],
-                [23.402765, -8.613281],
-                [37.71859, -25.3125],
-                [23.241346, -36.738281],
-              ]]
-            },
-          }
-        ]
-      };
-      L.geoJSON(fogOfWar, {
-        pane: 'fog',
-        style: function(feature) {
-          return {
-            fillColor: '#000000',
-            fillOpacity: 0.6,
-            opacity: 0,
-          };
-        },
-      }).addTo(map);
-      // try it with a custom icon
-
-      var geojsonFeature = {
-        "type": "Feature",
-        "properties": {
-          "name": "Coors Field",
-          "amenity": "Baseball Stadium",
-          "popupContent": "This is where the Rockies play!"
-        },
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-24.345703, -35.817813]
-        }
-      };
-      L.geoJSON(geojsonFeature, {
-        onEachFeature: function(feature, layer) {
-          // does this feature have a property named popupContent?
-          if (feature.properties && feature.properties.popupContent) {
-            layer.bindPopup(feature.properties.popupContent);
-          }
-        }
-      }).addTo(map);
+      // map.createPane('fog');
+      // map.getPane('fog').style.zIndex = 650;
+      // map.getPane('fog').style.pointerEvents = 'none';
+      //
+      // var fogOfWar = {
+      //   type: 'FeaturesCollection',
+      //   features: [
+      //     {
+      //       type: 'Feature',
+      //       geometry: {
+      //         type: 'Polygon',
+      //         coordinates: [[
+      //           [23.241346, -36.738281],
+      //           [23.402765, -8.613281],
+      //           [37.71859, -25.3125],
+      //           [23.241346, -36.738281],
+      //         ]]
+      //       },
+      //     }
+      //   ]
+      // };
+      // L.geoJSON(fogOfWar, {
+      //   pane: 'fog',
+      //   style: function(feature) {
+      //     return {
+      //       fillColor: '#000000',
+      //       fillOpacity: 0.6,
+      //       opacity: 0,
+      //     };
+      //   },
+      // }).addTo(map);
     </script>
   </body>
 </html>

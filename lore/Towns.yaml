@@ -1,0 +1,53 @@
+---
+- name: Starilaskur
+  coordinates: [-13.886719, 3.776559]
+- name: Cragwar
+  coordinates: [-41.374512, 18.85431]
+- name: Tellyn
+  coordinates: [-21.137695, 30.883369]
+- name: Vathirond
+  coordinates: [4.899902, 13.816744]
+- name: Athandra
+  coordinates: [-16.523438, 41.178654]
+- name: Gatherhold
+  coordinates: [44.1650, 12.3400]
+- name: Whitecliff
+  coordinates: [90.5273, 8.1245]
+- name: Ka'rhashan
+  coordinates: [101.2280, 10.5742]
+- name: Adderport
+  coordinates: [93.8232, -7.8416]
+- name: Norinath
+  coordinates: [71.9824, -15.8345]
+- name: Keth
+  coordinates: [60.0293, -16.2569]
+- name: Jal Paeridor
+  coordinates: [58.0518, -30.7890]
+- name: Pylas Maradal
+  coordinates: [49.9878, -39.3683]
+- name: Vulyar
+  coordinates: [50.3613, 37.6142]
+- name: Irontown
+  coordinates: [75.5859, 52.2950]
+- name: Lakeside
+  coordinates: [70.0488, 55.2541]
+- name: Teryk
+  coordinates: [49.5703, 51.0966]
+- name: Olath
+  coordinates: [3.1201, 37.7533]
+- name: Ghalt
+  coordinates: [-36.4526, 37.0376]
+- name: Avaroth
+  coordinates: [-14.8975, 36.5802]
+- name: Sharavacion
+  coordinates: [-9.3823, 35.0120]
+- name: Traelyn
+  coordinates: [-6.9873, 40.5806]
+- name: Lathleer
+  coordinates: [-26.3892, 46.2558]
+- name: Danthaven
+  coordinates: [-14.5459, 47.9311]
+- name: Daskaran
+  coordinates: [-9.1406, 54.1367]
+- name: Delethorn
+  coordinates: [-75.3442, 43.0046]

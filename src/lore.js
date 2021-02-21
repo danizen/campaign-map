@@ -1,0 +1,551 @@
+var geoCities = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.779785,
+          -39.368279
+        ]
+      },
+      "properties": {
+        "name": "Sharn",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Sharn\" target=\"blank\">Sharn</a>, largest city on Khorvaire"
+      }
+    }
+  ]
+};
+
+var geoTowns = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -13.886719,
+          3.776559
+        ]
+      },
+      "properties": {
+        "name": "Starilaskur"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -41.374512,
+          18.85431
+        ]
+      },
+      "properties": {
+        "name": "Cragwar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -21.137695,
+          30.883369
+        ]
+      },
+      "properties": {
+        "name": "Tellyn"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.899902,
+          13.816744
+        ]
+      },
+      "properties": {
+        "name": "Vathirond"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -16.523438,
+          41.178654
+        ]
+      },
+      "properties": {
+        "name": "Athandra"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.165,
+          12.34
+        ]
+      },
+      "properties": {
+        "name": "Gatherhold"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.5273,
+          8.1245
+        ]
+      },
+      "properties": {
+        "name": "Whitecliff"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.228,
+          10.5742
+        ]
+      },
+      "properties": {
+        "name": "Ka'rhashan"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.8232,
+          -7.8416
+        ]
+      },
+      "properties": {
+        "name": "Adderport"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.9824,
+          -15.8345
+        ]
+      },
+      "properties": {
+        "name": "Norinath"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.0293,
+          -16.2569
+        ]
+      },
+      "properties": {
+        "name": "Keth"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.0518,
+          -30.789
+        ]
+      },
+      "properties": {
+        "name": "Jal Paeridor"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.9878,
+          -39.3683
+        ]
+      },
+      "properties": {
+        "name": "Pylas Maradal"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.3613,
+          37.6142
+        ]
+      },
+      "properties": {
+        "name": "Vulyar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.5859,
+          52.295
+        ]
+      },
+      "properties": {
+        "name": "Irontown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.0488,
+          55.2541
+        ]
+      },
+      "properties": {
+        "name": "Lakeside"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.5703,
+          51.0966
+        ]
+      },
+      "properties": {
+        "name": "Teryk"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.1201,
+          37.7533
+        ]
+      },
+      "properties": {
+        "name": "Olath"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -36.4526,
+          37.0376
+        ]
+      },
+      "properties": {
+        "name": "Ghalt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -14.8975,
+          36.5802
+        ]
+      },
+      "properties": {
+        "name": "Avaroth"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.3823,
+          35.012
+        ]
+      },
+      "properties": {
+        "name": "Sharavacion"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.9873,
+          40.5806
+        ]
+      },
+      "properties": {
+        "name": "Traelyn"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -26.3892,
+          46.2558
+        ]
+      },
+      "properties": {
+        "name": "Lathleer"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -14.5459,
+          47.9311
+        ]
+      },
+      "properties": {
+        "name": "Danthaven"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.1406,
+          54.1367
+        ]
+      },
+      "properties": {
+        "name": "Daskaran"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.3442,
+          43.0046
+        ]
+      },
+      "properties": {
+        "name": "Delethorn"
+      }
+    }
+  ]
+};
+
+var geoCapitals = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.46582,
+          -19.932041
+        ]
+      },
+      "properties": {
+        "name": "Wroat",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Wroat\" target=\"blank\">Wroat</a>, capital of Breland"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -10.217285,
+          -28.130128
+        ]
+      },
+      "properties": {
+        "name": "Rhukaan Draal",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Rhukaan_Draal\" target=\"blank\">Rhukaan Draal</a>, captial of Darguun"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.492187,
+          -44.087585
+        ]
+      },
+      "properties": {
+        "name": "Trolanport",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Trolanport\" target=\"blank\">Trolanport</a>, capital of Zilargo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.456055,
+          18.85431
+        ]
+      },
+      "properties": {
+        "name": "The Great Crag",
+        "description": "The Great Crag, capital of Droaam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -28.45459,
+          52.227799
+        ]
+      },
+      "properties": {
+        "name": "Fairhaven",
+        "description": "Fairhaven, captial of Aundair"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.010254,
+          46.17983
+        ]
+      },
+      "properties": {
+        "name": "Flamekeep",
+        "description": "Flamekeep, capital of Thrane"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.688477,
+          50.833698
+        ]
+      },
+      "properties": {
+        "name": "Korth",
+        "description": "Korth, capital of Karrnath"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.161133,
+          -27.780772
+        ]
+      },
+      "properties": {
+        "name": "Taer Valaestas",
+        "description": "Taer Valaestas, capital of Valenar"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.724609,
+          -2.591889
+        ]
+      },
+      "properties": {
+        "name": "Newthrone",
+        "description": "Newthrone, capital of Q'Barra"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.913574,
+          56.182254
+        ]
+      },
+      "properties": {
+        "name": "Krona Peak",
+        "description": "Krona Peak, capital of the Mror Holds"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.460937,
+          45.58329
+        ]
+      },
+      "properties": {
+        "name": "Greenheart",
+        "description": "Greenheart, capital of the Eldeen Reaches"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -149.018555,
+          20.550509
+        ]
+      },
+      "properties": {
+        "name": "Zarash'ak",
+        "description": "Zarash'ak, capital of the Shadow Marches"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.775391,
+          71.552741
+        ]
+      },
+      "properties": {
+        "name": "Ashtakala",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Ashtakala\" target=\"blank\">Ashtakala</a>, captial of the Demon Wastes"
+      }
+    }
+  ]
+};
