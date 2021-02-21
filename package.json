@@ -5,7 +5,7 @@
   "main": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "deploy-aws-s3-cloudfront --bucket eberron-map-us-east-1 --source src"
+    "deploy": "deploy-aws-s3-cloudfront --bucket eberron-map-us-east-1 --source src --acl **/*:public-read"
   },
   "repository": {
     "type": "git",
