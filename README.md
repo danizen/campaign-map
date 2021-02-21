@@ -57,3 +57,18 @@ so I thought it best to preserve flexibility.
 
 - Stolen gist for tiling - https://gist.github.com/jeffThompson/a08e5b8146352f3974bfa4100d0317f6
 - Tutorial on the leaflet part - https://www.techtrail.net/creating-an-interactive-map-with-leaflet-js/
+
+## Preparing the Map Image
+
+It would be nice to automate preparing the map image, but it requires some judgement.
+Here is my best guess at an algorithm.
+
+- Check which is the longest dimension
+- If not square:
+    - Resize the image (not scale) so it is square
+    - Fill in the new space, if any, with a background color/pattern
+    - Blur
+- Check whether width is a power of 2, if not:
+    - Take log2 of width
+    - Round off, and raise 2 to that power
+    - Resize to the power of 2
