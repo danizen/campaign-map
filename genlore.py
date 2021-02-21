@@ -27,9 +27,12 @@ def transform_feature(feature):
     if link:
         name = feature.get('name')
         desc = feature.get('description')
-        if name and desc:
+        if name:
             replacement = '<a href="{}" target="blank">{}</a>'.format(link, name)
-            feature['description'] = desc.replace(name, replacement)
+            if desc:
+                feature['description'] = desc.replace(name, replacement)
+            else:
+                feature['description'] = name.replace(name, replacement)
     return {
         'type': 'Feature',
         'geometry': {

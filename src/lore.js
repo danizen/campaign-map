@@ -14,6 +14,62 @@ var geoCities = {
         "name": "Sharn",
         "description": "<a href=\"https://eberron.fandom.com/wiki/Sharn\" target=\"blank\">Sharn</a>, largest city on Khorvaire"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7188,
+          41.0462
+        ]
+      },
+      "properties": {
+        "name": "Karrlakton",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Karrlakton\" target=\"blank\">Karrlakton</a>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.4941,
+          28.5363
+        ]
+      },
+      "properties": {
+        "name": "Aruldusk",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Aruldusk\" target=\"blank\">Aruldusk</a>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6523,
+          53.1995
+        ]
+      },
+      "properties": {
+        "name": "Atur",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Atur\" target=\"blank\">Atur</a>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.4712,
+          54.3165
+        ]
+      },
+      "properties": {
+        "name": "Rekkenmark",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Rekkenmark\" target=\"blank\">Rekkenmark</a>"
+      }
     }
   ]
 };
@@ -418,7 +474,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "The Great Crag",
-        "description": "The Great Crag, capital of Droaam"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Great_Crag\" target=\"blank\">The Great Crag</a>, capital of Droaam"
       }
     },
     {
@@ -432,7 +488,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Fairhaven",
-        "description": "Fairhaven, captial of Aundair"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Fairhaven\" target=\"blank\">Fairhaven</a>, captial of Aundair"
       }
     },
     {
@@ -446,7 +502,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Flamekeep",
-        "description": "Flamekeep, capital of Thrane"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Flamekeep\" target=\"blank\">Flamekeep</a>, capital of Thrane"
       }
     },
     {
@@ -460,7 +516,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Korth",
-        "description": "Korth, capital of Karrnath"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Korth\" target=\"blank\">Korth</a>, capital of Karrnath"
       }
     },
     {
@@ -474,7 +530,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Taer Valaestas",
-        "description": "Taer Valaestas, capital of Valenar"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Taer_Valaestas\" target=\"blank\">Taer Valaestas</a>, capital of Valenar"
       }
     },
     {
@@ -488,7 +544,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Newthrone",
-        "description": "Newthrone, capital of Q'Barra"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Newthrone\" target=\"blank\">Newthrone</a>, capital of Q'barra"
       }
     },
     {
@@ -502,7 +558,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Krona Peak",
-        "description": "Krona Peak, capital of the Mror Holds"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Krona_Peak\" target=\"blank\">Krona Peak</a>, capital of the Mror Holds"
       }
     },
     {
@@ -516,7 +572,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Greenheart",
-        "description": "Greenheart, capital of the Eldeen Reaches"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Greenheart\" target=\"blank\">Greenheart</a>, capital of the Eldeen Reaches"
       }
     },
     {
@@ -530,7 +586,7 @@ var geoCapitals = {
       },
       "properties": {
         "name": "Zarash'ak",
-        "description": "Zarash'ak, capital of the Shadow Marches"
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Zarash%27ak\" target=\"blank\">Zarash'ak</a>, capital of the Shadow Marches"
       }
     },
     {

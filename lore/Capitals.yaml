@@ -13,30 +13,39 @@
   coordinates: [-54.492187, -44.087585]
 - name: The Great Crag
   description: The Great Crag, capital of Droaam
+  link: https://eberron.fandom.com/wiki/Great_Crag
   coordinates: [-112.456055, 18.85431]
 - name: Fairhaven
   description: Fairhaven, captial of Aundair
+  link: https://eberron.fandom.com/wiki/Fairhaven
   coordinates: [-28.45459, 52.227799]
 - name: Flamekeep
   description: Flamekeep, capital of Thrane
+  link: https://eberron.fandom.com/wiki/Flamekeep
   coordinates: [-3.010254, 46.17983]
 - name: Korth
   description: Korth, capital of Karrnath
+  link: https://eberron.fandom.com/wiki/Korth
   coordinates: [15.688477, 50.833698]
 - name: Taer Valaestas
   description: Taer Valaestas, capital of Valenar
+  link: https://eberron.fandom.com/wiki/Taer_Valaestas
   coordinates: [60.161133, -27.780772]
 - name: Newthrone
-  description: Newthrone, capital of Q'Barra
+  description: Newthrone, capital of Q'barra
+  link: https://eberron.fandom.com/wiki/Newthrone
   coordinates: [92.724609, -2.591889]
 - name: Krona Peak
   description: Krona Peak, capital of the Mror Holds
+  link: https://eberron.fandom.com/wiki/Krona_Peak
   coordinates: [83.913574, 56.182254]
 - name: Greenheart
   description: Greenheart, capital of the Eldeen Reaches
+  link: https://eberron.fandom.com/wiki/Greenheart
   coordinates: [-92.460937, 45.58329]
 - name: Zarash'ak
   description: Zarash'ak, capital of the Shadow Marches
+  link: https://eberron.fandom.com/wiki/Zarash%27ak
   coordinates: [-149.018555, 20.550509]
 - name: Ashtakala
   description: Ashtakala, captial of the Demon Wastes

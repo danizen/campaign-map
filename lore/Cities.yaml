@@ -3,3 +3,15 @@
   description: Sharn, largest city on Khorvaire
   link: https://eberron.fandom.com/wiki/Sharn
   coordinates: [-91.779785, -39.368279]
+- name: Karrlakton
+  link: https://eberron.fandom.com/wiki/Karrlakton
+  coordinates: [26.7188, 41.0462]
+- name: Aruldusk
+  link: https://eberron.fandom.com/wiki/Aruldusk
+  coordinates: [-1.4941, 28.5363]
+- name: Atur
+  link: https://eberron.fandom.com/wiki/Atur
+  coordinates: [28.6523, 53.1995]
+- name: Rekkenmark
+  link: https://eberron.fandom.com/wiki/Rekkenmark
+  coordinates: [5.4712, 54.3165]
