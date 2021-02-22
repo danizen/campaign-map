@@ -1,5 +1,5 @@
 /src/images/khorvaire/
-/out/
+/dest/
 /node_modules/
 *.pyc
 *.pyo

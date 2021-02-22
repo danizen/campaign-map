@@ -44,6 +44,7 @@ def transform_feature(feature):
 
 
 def parse_lore(path):
+    print('parsing %s' % path)
     geojson = None
     with path.open() as f:
         lore = yaml.load(f, Loader=yaml.SafeLoader)
