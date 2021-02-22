@@ -138,6 +138,20 @@ var geoForts = {
         "name": "Arythawn Keep",
         "description": "<a href=\"https://eberron.fandom.com/wiki/Arythawn_Keep\" target=\"blank\">Arythawn Keep</a>"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.1201,
+          33.1007
+        ]
+      },
+      "properties": {
+        "name": "Angwar Keep",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Angwar_Keep\" target=\"blank\">Angwar Keep</a>"
+      }
     }
   ]
 };
@@ -171,6 +185,20 @@ var geoRuins = {
       "properties": {
         "name": "Seaside",
         "description": "<a href=\"https://eberron.fandom.com/wiki/Seaside\" target=\"blank\">Seaside</a>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.6914,
+          30.8268
+        ]
+      },
+      "properties": {
+        "name": "Eston",
+        "description": "<a href=\"https://eberron.fandom.com/wiki/Eston\" target=\"blank\">Eston</a>"
       }
     }
   ]

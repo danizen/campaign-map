@@ -3,73 +3,21 @@
   <head>
     <title>Khorvaire Lore Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet"
-           href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-           crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-             crossorigin=""></script>
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin="anonymous"></script>
   </head>
-  
   <body style="height: 100%;margin: 0;">
-    <div id="map" style="width: 100%; height: 100%; background: #000000;"></div>
+    <h1 class="middle">Khorvaire Lore Map</h1>
+    <div class="middle mapbox">
+      <div id="map" style="width: 100%; height: 100%; margin-background: #000000;"></div>
+    </div>
     <script type="text/javascript" src="js/lore.js"></script>
-    <script type="text/javascript">
-
-      // Creating the Map
-      var map = L.map('map').setView([0, 0], 0);
-      L.tileLayer('images/khorvaire/{z}/{x}/{y}.png', {
-        continuousWorld: false,
-        noWrap: true,
-        tileSize: 256,
-        minZoom: 2,
-        maxZoom: 6,
-      }).addTo(map);
-      map.setMaxBounds([
-        [90, 180],
-        [-90, -180]
-      ]);
-
-      // Coordinate Finder
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('admin')) {
-        var marker = L.marker([0, 0], {
-          draggable: true,
-        }).addTo(map);
-        marker.bindPopup('LatLng Marker').openPopup();
-        marker.on('dragend', function(e) {
-          var latlng = marker.getLatLng();
-          var lat = latlng.lat.toFixed(4);
-          var lng = latlng.lng.toFixed(4);
-          marker.getPopup().setContent(`[${lng}, ${lat}]`).openOn(map);
-        });
-      }
-
-      // Converts lore into popup text
-      function lorePopup(layer) {
-        if (layer.feature.properties.description) {
-          return layer.feature.properties.description
-        }
-        return layer.feature.properties.name;
-      }
-
-      // Overlays based on lore
-      var mlTowns = L.geoJSON(geoTowns).bindPopup(lorePopup);
-      var mlCities = L.geoJSON(geoCities).bindPopup(lorePopup);
-      var mlCapitals = L.geoJSON(geoCapitals).bindPopup(lorePopup);
-      var mlSites = L.geoJSON(geoSites).bindPopup(lorePopup);
-      var mlRuins = L.geoJSON(geoRuins).bindPopup(lorePopup);
-      var mlForts = L.geoJSON(geoForts).bindPopup(lorePopup);
-      var overlays = {
-        'Capitals': mlCapitals,
-        'Cities': mlCities,
-        'Forts': mlForts,
-        'Ruins': mlRuins,
-        'Sites': mlSites,
-        'Towns': mlTowns,
-      }
-      L.control.layers(null, overlays).addTo(map);
-    </script>
+    <script type="text/javascript" src="js/loremap.js"></script>
   </body>
 </html>
