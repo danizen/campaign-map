@@ -1,5 +1,7 @@
 // Creating the Map
-var map = L.map('map').setView([0, 0], 2);
+var map = L.map('map', {
+    drawControl: true
+}).setView([0, 0], 2);
 L.tileLayer('images/khorvaire/{z}/{x}/{y}.png', {
     continuousWorld: false,
     noWrap: true,
