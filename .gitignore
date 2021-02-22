@@ -1,5 +1,6 @@
 /src/images/khorvaire/
 /dest/
+/tiles/
 /node_modules/
 *.pyc
 *.pyo
